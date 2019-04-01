@@ -2,7 +2,7 @@ console.log('Calculator Loaded!', window);
 var loadCount = 0;
 var interval = setInterval(function () {
   if (typeof window.spro === 'object' && window.spro !== null) {
-    main();
+    mainInterval();
     clearInterval(interval);
   }
   else if (loadCount > 100) {
@@ -13,6 +13,12 @@ var interval = setInterval(function () {
     loadCount++;
   }
 }, 100);
+
+function mainInterval () {
+  setInterval(function () {
+    main();
+  }, 3000);
+}
 
 function main () {
   console.log('excute main');
@@ -64,7 +70,3 @@ function main () {
       });
     });
 }
-(function () {
-
-
-})();
