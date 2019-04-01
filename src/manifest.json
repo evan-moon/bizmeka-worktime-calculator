@@ -1,5 +1,5 @@
 {
-  "name": "Chrome Extension Webpack",
+  "name": "비즈메카 근무시간계산기",
   "options_page": "options.html",
   "background": {
     "page": "background.html"
