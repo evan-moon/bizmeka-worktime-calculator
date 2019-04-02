@@ -1,4 +1,5 @@
 import "../css/popup.css";
+import $ from 'jquery';
 
 const port = chrome.extension.connect({ name: 'background' });
 
@@ -10,11 +11,38 @@ port.onMessage.addListener(msg => {
   }
 });
 
+const $doms = {
+  workingDay: $(document).find('*[data-name="workingDay"]'),
+  haveWorkTime: $(document).find('*[data-name="haveWorkTime"]'),
+  myWorkHours: $(document).find('*[data-name="myWorkHours"]'),
+  myWorkMinutes: $(document).find('*[data-name="myWorkMinutes"]'),
+  overTimeHours: $(document).find('*[data-name="overTimeHours"]'),
+  overTimeMinutes: $(document).find('*[data-name="overTimeMinutes"]'),
+};
+
 function onFetchWorkTime (payload) {
-  document.getElementById('workingDay').innerText = '이번 달 근무일: ' + payload.workingDay + '일';
-  document.getElementById('haveWorkTime').innerText = '원래 근무해야 하는 시간: ' + payload.haveWorkTime + '시간';
-  document.getElementById('realWorkHours').innerText = '실제 근무 시간: ' + payload.realWorkHours + '시간 ' + payload.realWorkMinute + '분';
-  document.getElementById('overTime').innerText = '초과된 시간: ' + payload.overTime.hour + '시간 ' + payload.overTime.minute + '분';
+  const $overTimeDOM = $('#overTime');
+  if (payload.overTimeHours > 0 || payload.overTimeMinutes > 0) {
+    $overTimeDOM.addClass('over');
+  }
+  else {
+    $overTimeDOM.removeClass('over');
+  }
+  bindTimeToDOM(payload);
+}
+
+function bindTimeToDOM (payload) {
+  const keys = Object.keys(payload);
+  keys.forEach(key => {
+    const $dom = $doms[key];
+    const value = payload[key];
+    if (value) {
+      $dom.text(value);
+    }
+    else {
+      $dom.text('error');
+    }
+  });
 }
 
 

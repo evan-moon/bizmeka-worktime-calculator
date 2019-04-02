@@ -5,12 +5,36 @@
   <title>비즈메카 근무시간 계산기</title>
 </head>
 <body>
-  <div></div>
-  <div>
-    <p id="workingDay"></p>
-    <p id="haveWorkTime"></p>
-    <p id="realWorkHours"></p>
-    <p id="overTime"></p>
+  <div id="title">비즈메카 근무시간 계산기</div>
+  <div id="time-viewer">
+    <ul>
+      <li>
+        <label>이번 달 근무일</label>
+        <p>
+          <span data-name="workingDay"></span>일
+        </p>
+      </li>
+      <li>
+        <label>원래 근무해야 하는 시간</label>
+        <p>
+          <span data-name="haveWorkTime"></span>시간
+        </p>
+      </li>
+      <li>
+        <label>내 근무 시간</label>
+        <p>
+          <span data-name="myWorkHours"></span>시간
+          <span data-name="myWorkMinutes"></span>분
+        </p>
+      </li>
+      <li id="overTime">
+        <label>초과된 시간</label>
+        <p>
+          <span data-name="overTimeHours"></span> 시간
+          <span data-name="overTimeMinutes"></span> 분
+        </p>
+      </li>
+    </ul>
   </div>
 </body>
 </html>
