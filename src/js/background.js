@@ -1,5 +1,5 @@
-import '../img/icon-128.png';
-import '../img/icon-34.png';
+import '../img/128.png';
+import '../img/32.png';
 
 function checkForValidUrl(tabId, changeInfo, tab) {
   chrome.pageAction.hide(tabId);

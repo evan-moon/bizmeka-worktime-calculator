@@ -5,10 +5,11 @@
   },
   "page_action": {
     "default_popup": "popup.html",
-    "default_icon": "icon-34.png"
+    "default_icon": "32.png"
   },
   "icons": {
-    "128": "icon-128.png"
+    "32": "32.png",
+    "128": "128.png"
   },
   "permissions" : [
     "declarativeContent",
