@@ -8,9 +8,7 @@ function injectScript(file, node) {
 injectScript( chrome.extension.getURL('/calculator.bundle.js'), 'body');
 
 window.onmessage = payload => {
-  console.log('message -> ', payload);
-  if (payload.data && payload.data.type === 'onLoadWorkTimes') {
-    console.log('post message to extension', payload.data);
+  if (payload.data && payload.data.type === 'updateWorkTime') {
     chrome.runtime.sendMessage('', payload.data);
   }
 };

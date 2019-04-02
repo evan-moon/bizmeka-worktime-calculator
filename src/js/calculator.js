@@ -58,7 +58,7 @@ function main () {
       const haveWorkTime = workingDay * originWorkTime;
       const overTimeHours = myWorkHours - haveWorkTime;
       window.postMessage({
-        type: 'onLoadWorkTimes',
+        type: 'updateWorkTime',
         data: {
           workingDay,
           haveWorkTime,
