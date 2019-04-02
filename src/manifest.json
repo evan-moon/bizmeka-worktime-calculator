@@ -12,20 +12,8 @@
     "128": "128.png"
   },
   "permissions" : [
-    "declarativeContent",
     "activeTab",
-    "tabs",
-    "http://*/*",
-    "https://*/*",
-    "background",
-    "contentSettings",
-    "debugger",
-    "notifications",
-    "pageCapture",
-    "topSites",
-    "webNavigation",
-    "webRequest",
-    "webRequestBlocking"
+    "tabs"
   ],
   "web_accessible_resources": [
     "calculator.bundle.js"
