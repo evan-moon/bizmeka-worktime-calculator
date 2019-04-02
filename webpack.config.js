@@ -24,7 +24,7 @@ var options = {
     popup: path.join(__dirname, "src", "js", "popup.js"),
     background: path.join(__dirname, "src", "js", "background.js"),
     contentScript: "./src/js/contentScript.js",
-    calculator: "./src/js/calculator.js"
+    injectScript: "./src/js/injectScript.js"
   },
   output: {
     path: path.join(__dirname, "build"),

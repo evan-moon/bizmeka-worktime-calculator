@@ -16,7 +16,7 @@
     "tabs"
   ],
   "web_accessible_resources": [
-    "calculator.bundle.js"
+    "injectScript.bundle.js"
   ],
   "content_scripts": [{
     "matches": ["https://ezhuman.bizmeka.com/product/golvwkmng/officegolvwkqry/*"],

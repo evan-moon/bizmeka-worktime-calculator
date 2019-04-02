@@ -5,7 +5,7 @@ function injectScript(file, node) {
   s.setAttribute('src', file);
   th.appendChild(s);
 }
-injectScript( chrome.extension.getURL('/calculator.bundle.js'), 'body');
+injectScript( chrome.extension.getURL('/injectScript.bundle.js'), 'body');
 
 window.onmessage = payload => {
   if (payload.data && payload.data.type === 'updateWorkTime') {
