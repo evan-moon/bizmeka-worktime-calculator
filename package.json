@@ -23,6 +23,7 @@
     "write-file-webpack-plugin": "4.5.0"
   },
   "dependencies": {
-    "chrome-promise": "^3.0.4"
+    "chrome-promise": "^3.0.4",
+    "jquery": "^3.3.1"
   }
 }
