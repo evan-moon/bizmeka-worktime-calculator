@@ -1,6 +1,6 @@
 console.log('Calculator Loaded!', window);
-var loadCount = 0;
-var interval = setInterval(function () {
+let loadCount = 0;
+const interval = setInterval(function () {
   if (typeof window.spro === 'object' && window.spro !== null) {
     mainInterval();
     clearInterval(interval);
@@ -21,14 +21,13 @@ function mainInterval () {
 }
 
 function main () {
-  console.log('excute main');
-  var spro = window.spro;
-  var sumH = 0;
-  var sumM = 0;
-  var workingDay = 0;
-  var originWorkTime = 8;
-  var officeGolvwkQryInstance = spro.officeGolvwkQryInstance;
-  var api = officeGolvwkQryInstance.prefixUrl+"officeGolvwkQryList.do"+officeGolvwkQryInstance.getQueryParam();
+  const spro = window.spro;
+  let sumH = 0;
+  let sumM = 0;
+  let workingDay = 0;
+  let originWorkTime = 8;
+  const officeGolvwkQryInstance = spro.officeGolvwkQryInstance;
+  const api = officeGolvwkQryInstance.prefixUrl+"officeGolvwkQryList.do"+officeGolvwkQryInstance.getQueryParam();
   fetch(api).then(res => res.text())
     .then(xml => {
       var parser = new DOMParser();
@@ -56,8 +55,8 @@ function main () {
 
       sumH = Math.floor(Number(sumH + (sumM / 60)));
       sumM = Math.floor(Number(sumM % 60));
-      var haveWorkTime = workingDay * originWorkTime;
-      var overHour = sumH - origin;
+      const haveWorkTime = workingDay * originWorkTime;
+      const overHour = sumH - origin;
       window.postMessage({
         type: 'onLoadWorkTimes',
         data: {

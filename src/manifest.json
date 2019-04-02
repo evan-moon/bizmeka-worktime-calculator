@@ -1,5 +1,5 @@
 {
-  "name": "비즈메카 근무시간계산기",
+  "name": "비즈메카 근무시간 계산기",
   "background": {
     "page": "background.html"
   },
@@ -30,7 +30,7 @@
     "calculator.bundle.js"
   ],
   "content_scripts": [{
-    "matches": ["https://ezhuman.bizmeka.com/product/*"],
+    "matches": ["https://ezhuman.bizmeka.com/product/golvwkmng/officegolvwkqry/*"],
     "js": ["contentScript.bundle.js"],
     "run_at": "document_idle"
   }],
