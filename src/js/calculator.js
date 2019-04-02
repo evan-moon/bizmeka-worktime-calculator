@@ -1,6 +1,10 @@
+import $ from 'jquery';
+
 console.log('Calculator Loaded');
 
 let loadCount = 0;
+const loadInterval = 100;
+const fetchInterval = 1000;
 const interval = setInterval(function () {
   if (typeof window.spro === 'object' && window.spro !== null) {
     mainInterval();
@@ -12,20 +16,22 @@ const interval = setInterval(function () {
   else {
     loadCount++;
   }
-}, 100);
+}, loadInterval);
 
 function mainInterval () {
   setInterval(function () {
     main();
-  }, 3000);
+  }, fetchInterval);
 }
 
 function main () {
+  const date = $('input[name="workYymm"]').val();
   const spro = window.spro;
   let myWorkHours = 0;
   let myWorkMinutes = 0;
   let workingDay = 0;
   let originWorkTime = 8;
+  let halfHolidayCount = 0;
   const officeGolvwkQryInstance = spro.officeGolvwkQryInstance;
   const api = officeGolvwkQryInstance.prefixUrl+'officeGolvwkQryList.do'+officeGolvwkQryInstance.getQueryParam();
   fetch(api).then(res => res.text())
@@ -50,6 +56,7 @@ function main () {
         else if (halfHoliday) {
           myWorkHours += (originWorkTime / 2);
           workingDay += 0.5;
+          halfHolidayCount++;
         }
       }
 
@@ -60,7 +67,9 @@ function main () {
       window.postMessage({
         type: 'updateWorkTime',
         data: {
+          date,
           workingDay,
+          halfHolidayCount,
           haveWorkTime,
           myWorkHours,
           myWorkMinutes,

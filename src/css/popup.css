@@ -7,7 +7,7 @@ html {
   font-size: 14px;
 }
 body {
-  min-width: 350px;
+  min-width: 300px;
   max-width: 450px;
   min-height: 300px;
   padding: 1rem;
@@ -20,11 +20,11 @@ li {
   text-align: center;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 #time-viewer {
-  padding: 1rem;
+  padding: 2rem 1rem 1rem;
+  display: none;
 }
 #time-viewer li {
   margin-bottom: 1rem;
@@ -32,8 +32,8 @@ li {
 #time-viewer li label {
   display: block;
   color: #999;
-  font-size: 1rem;
-  margin-bottom: .5rem;
+  font-size: .8rem;
+  margin-bottom: .3rem;
 }
 #time-viewer li p {
   color: #212121;
@@ -45,12 +45,33 @@ li {
   margin-right: .2rem;
   font-weight: bold;
 }
+#time-viewer li p small, #time-viewer li p small span {
+  font-size: .8rem;
+  font-weight: normal;
+  margin: 0;
+}
 
 #time-viewer #overTime {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #eee;
 }
+#time-viewer #overTime span {
+  color: #d32f2f;
+}
 #time-viewer #overTime.over span {
   color: #4caf50;
+}
+#refresh-button {
+  width: 100%;
+  margin: 1rem 0;
+  border: none;
+  color: #fff;
+  background-color: #d32f2f;
+  padding: .7rem 1rem;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+}
+#refresh-button:hover {
+  opacity: .8;
 }

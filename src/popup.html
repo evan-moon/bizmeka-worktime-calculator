@@ -5,13 +5,16 @@
   <title>비즈메카 근무시간 계산기</title>
 </head>
 <body>
-  <div id="title">비즈메카 근무시간 계산기</div>
+  <div id="title">
+    <span data-name="date"></span> 근무시간 현황
+  </div>
+  <div id="no-data">아직 불러올 수 있는 근무시간 데이터가 없습니다. 새로고침을 눌러주세요.</div>
   <div id="time-viewer">
     <ul>
       <li>
         <label>이번 달 근무일</label>
         <p>
-          <span data-name="workingDay"></span>일
+          <span data-name="workingDay"></span>일 <small>(반차: <span data-name="halfHolidayCount"></span>회 )</small>
         </p>
       </li>
       <li>
@@ -36,5 +39,6 @@
       </li>
     </ul>
   </div>
+  <button id="refresh-button">새로고침</button>
 </body>
 </html>
