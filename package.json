@@ -1,6 +1,6 @@
 {
   "name": "bizmeka-working-day-calculator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "비즈메카 전용 근무시간계산기",
   "scripts": {
     "build": "node utils/build.js",
@@ -23,7 +23,6 @@
     "write-file-webpack-plugin": "4.5.0"
   },
   "dependencies": {
-    "chrome-promise": "^3.0.4",
     "jquery": "^3.3.1"
   }
 }
