@@ -1,4 +1,5 @@
-import { calculator } from './lib/calculator';
+import $ from 'jquery';
+import { calcWorkTime } from './lib/calculator';
 
 console.log('Calculator Loaded');
 
@@ -26,6 +27,21 @@ function mainInterval () {
 }
 
 function main () {
-  calculator();
+  const date = $('input[name="workYymm"]').val();
+  const spro = window.spro;
+  const officeGolvwkQryInstance = spro.officeGolvwkQryInstance;
+  const api = officeGolvwkQryInstance.prefixUrl+'officeGolvwkQryList.do'+officeGolvwkQryInstance.getQueryParam();
+
+  fetch(api)
+    .then(res => res.text())
+    .then(xml => {
+      const data = calcWorkTime(xml);
+      data.date = date;
+
+      window.postMessage({
+        type: 'updateWorkTime',
+        data,
+      });
+    });
 }
 
