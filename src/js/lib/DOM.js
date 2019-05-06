@@ -14,14 +14,15 @@ const $doms = {
 export const $timeViewer = $('#time-viewer');
 export const $noData = $('#no-data');
 
-export function setOverTimeDOMClass (overTimeHours = 0, overTimeMinutes = 0) {
+export function setOverTimeDOMClass (isOver = false) {
   const $overTimeDOM = $('#overTime');
-  const overTimeHourToMinutes = overTimeHours * 60;
-  if (overTimeHourToMinutes + overTimeMinutes > 0) {
+  if (isOver) {
     $overTimeDOM.addClass('over');
+    $overTimeDOM.find('label').text('초과된 시간');
   }
   else {
     $overTimeDOM.removeClass('over');
+    $overTimeDOM.find('label').text('모자란 시간');
   }
 }
 

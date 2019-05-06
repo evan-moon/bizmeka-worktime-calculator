@@ -20,7 +20,7 @@ function onFetchWorkTime (payload) {
   }
   $timeViewer.show();
   $noData.hide();
-  setOverTimeDOMClass(payload.overTimeHours, payload.overTimeMinutes);
+  setOverTimeDOMClass(payload.isOver);
   DOM(payload);
 }
 
