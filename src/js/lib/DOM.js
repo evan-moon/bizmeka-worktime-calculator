@@ -8,6 +8,7 @@ const $doms = {
   myWorkMinutes: $(document).find('*[data-name="myWorkMinutes"]'),
   overTimeHours: $(document).find('*[data-name="overTimeHours"]'),
   overTimeMinutes: $(document).find('*[data-name="overTimeMinutes"]'),
+  fullHolidayCount: $(document).find('*[data-name="fullHolidayCount"]'),
   halfHolidayCount: $(document).find('*[data-name="halfHolidayCount"]'),
 };
 
@@ -31,6 +32,7 @@ export function DOM (payload) {
   keys.forEach(key => {
     const $dom = $doms[key];
     const value = payload[key];
+    console.log(key, $dom);
     if (!$dom) {
       return;
     }
