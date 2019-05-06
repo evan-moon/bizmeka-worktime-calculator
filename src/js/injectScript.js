@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { bizmekaXMLParser } from './lib/bizmekaXMLParser';
 import { calcWorkTime } from './lib/calculator';
 
 console.log('Calculator Loaded');
@@ -35,7 +36,8 @@ function main () {
   fetch(api)
     .then(res => res.text())
     .then(xml => {
-      const data = calcWorkTime(xml);
+      const workdays = bizmekaXMLParser(xml);
+      const data = calcWorkTime(workdays);
       data.date = date;
 
       window.postMessage({

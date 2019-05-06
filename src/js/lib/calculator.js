@@ -1,53 +1,62 @@
-export function calcWorkTime (xml) {
-  let myWorkHours = 0;
-  let myWorkMinutes = 0;
-  let workingDay = 0;
-  let originWorkTime = 8;
-  let halfHolidayCount = 0;
+import { WORK_TYPE } from '../constants';
+const WORK_TIME_FOR_DAY = 8 * 60; // minutes
 
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(xml, 'text/xml');
-  const workRegex = /근무시간\s:\s.+/;
-  const halfHolidayRegex = /전일\/반일\s:\s반일/;
-  for (let i = 0; i < xmlDoc.getElementsByTagName('userdata').length; i++) {
-    const string = xmlDoc.getElementsByTagName('userdata')[i].innerHTML;
-    const workday = workRegex.exec(string);
-    const halfHoliday = halfHolidayRegex.exec(string);
+function convertToHourMinute (minutes = 0) {
+  return {
+    h: Math.floor(Math.abs(minutes) / 60),
+    m: Math.floor(Math.abs(minutes) % 60),
+  };
+}
 
-    if (workday) {
-      const time = workday[0].split(/\s:\s/)[1].trim();
-      const hour = parseInt(time.split(':')[0]);
-      const min = parseInt(time.split(':')[1]);
-      myWorkHours += hour;
-      myWorkMinutes += min;
-      workingDay++;
+/**
+ * @function calcWorkTime
+ * @argument {} xml
+ * @desc 모든 시간 계산은 분단위로 이루어진다.
+ */
+export function calcWorkTime (workdays) {
+  let myTotalWorkMinutes = 0; // minutes
+  const counter = {
+    work: 0,
+    halfHoliday: 0,
+    fullHoliday: 0,
+  };
+
+  workdays.forEach(day => {
+    if (day.type === WORK_TYPE.WORK) {
+      counter.work += 1;
+
+      const hours = Math.floor(day.workTime.split(':')[0]);
+      const minutes = Math.floor(day.workTime.split(':')[1]);
+      myTotalWorkMinutes += (minutes + (hours * 60));
     }
-    else if (halfHoliday) {
-      myWorkHours += (originWorkTime / 2);
-      workingDay += 0.5;
-      halfHolidayCount++;
+    else if (day.type === WORK_TYPE.HOLIDAY) {
+      if (day.holidayType === '전일') {
+        counter.fullHoliday += 1;
+      }
+      else {
+        counter.work += 0.5;
+        counter.halfHoliday += 1;
+        myTotalWorkMinutes += (WORK_TIME_FOR_DAY / 2);
+      }
     }
-  }
+  });
 
-  // worktime calculating
-  myWorkHours = Math.floor(Number(myWorkHours + (myWorkMinutes / 60)));
-  myWorkMinutes = Math.floor(Number(myWorkMinutes % 60));
+  const haveWorkMinutes = WORK_TIME_FOR_DAY * counter.work;
+  const overtimeMinutes = myTotalWorkMinutes - haveWorkMinutes;
 
-  const totalMyWorkMinutes = (myWorkHours * 60) + myWorkMinutes;
-  const haveWorkMinutes = workingDay * originWorkTime * 60;
-  const overTime = totalMyWorkMinutes - haveWorkMinutes;
-
-  const haveWorkTime = Math.floor(haveWorkMinutes / 60);
-  const overTimeHours = Math.floor(overTime / 60);
-  const overTimeMinutes = Math.floor(overTime % 60);
+  const convertedHaveWorkTime = convertToHourMinute(haveWorkMinutes);
+  const convertedMyWorkTime = convertToHourMinute(myTotalWorkMinutes);
+  const convertedOvertime = convertToHourMinute(overtimeMinutes);
 
   return {
-    workingDay,
-    halfHolidayCount,
-    haveWorkTime,
-    myWorkHours,
-    myWorkMinutes,
-    overTimeHours,
-    overTimeMinutes
+    isOver: overtimeMinutes >= 0,
+    workingDay: counter.work,
+    halfHolidayCount: counter.halfHoliday,
+    fullHolidayCount: counter.fullHoliday,
+    haveWorkTime: convertedHaveWorkTime.h,
+    myWorkHours: convertedMyWorkTime.h,
+    myWorkMinutes: convertedMyWorkTime.m,
+    overTimeHours: convertedOvertime.h,
+    overTimeMinutes: convertedOvertime.m,
   };
 }
