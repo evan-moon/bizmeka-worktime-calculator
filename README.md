@@ -1,24 +1,26 @@
-# Chrome Extension Webpack Boilerplate
+# Bizmeka Working Day Calculator
+**DO NOT OVERWORK AND ENJOY YOUR LIFE!**
+
+this application is used to calculate your working day and time in bizmeka ERP in South Korea.
+You can help other people who is suffering from overtime by creating pull requests freely!
+
+This Chrome extension is created with Samuel Simões's [Chrome Extension Webpack Boilerplate](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate).
+
 
 A basic foundation boilerplate for rich Chrome Extensions using [Webpack](https://webpack.github.io/) to help you write modular and modern Javascript code, load CSS easily and [automatic reload the browser on code changes](https://webpack.github.io/docs/webpack-dev-server.html#automatic-refresh).
 
-## Developing a new extension
-_I'll assume that you already read the [Webpack docs](https://webpack.github.io/docs) and the [Chrome Extension](https://developer.chrome.com/extensions/getstarted) docs._
-
-
-1. Check if your Node.js version is >= 6.
-2. Clone the repository.
-3. Install [yarn](https://yarnpkg.com/lang/en/docs/install/).
-4. Run `yarn`.
-5. Change the package's name and description on `package.json`.
-6. Change the name of your extension on `src/manifest.json`.
-7. Run `npm run start`
-8. Load your extension on Chrome following:
+## Development
+1. Clone the repository.
+2. install npm packages
+3. Change the package's name and description on `package.json`.
+4. Change the name of your extension on `src/manifest.json`.
+5. Run `npm start`
+6. Load your extension on Chrome following:
     1. Access `chrome://extensions/`
     2. Check `Developer mode`
     3. Click on `Load unpacked extension`
     4. Select the `build` folder.
-8. Have fun.
+7. Have fun.
 
 ## Structure
 All your extension's development code must be placed in `src` folder, including the extension manifest.
@@ -39,7 +41,6 @@ $ PORT=6002 npm run start
 ```
 
 ## Content Scripts
-
 Although this boilerplate uses the webpack dev server, it's also prepared to write all your bundles files on the disk at every code change, so you can point, on your extension manifest, to your bundles that you want to use as [content scripts](https://developer.chrome.com/extensions/content_scripts), but you need to exclude these entry points from hot reloading [(why?)](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate/issues/4#issuecomment-261788690). To do so you need to expose which entry points are content scripts on the `webpack.config.js` using the `chromeExtensionBoilerplate -> notHotReload` config. Look the example below.
 
 Let's say that you want use the `myContentScript` entry point as content script, so on your `webpack.config.js` you will configure the entry point and exclude it from hot reloading, like this:
@@ -97,17 +98,3 @@ import secrets from "secrets";
 ApiCall({ key: secrets.key });
 ```
 :point_right: The files with name `secrets.*.js` already are ignored on the repository.
-
-## With React.js
-:bulb: If you want use [React.js](https://facebook.github.io/react/) with this boilerplate, check the **[react branch](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate/tree/react)**.
-
-
-## Contributing
-
-1. **Please!! Do not create a pull request without an issue before discussing the problem.**
-2. On your PR make sure that you are following the current codebase style.
-3. Your PR must be single purpose. Resolve just one problem on your PR.
-4. Make sure to commit in the same style that we are committing until now on the project.
-
--------------
-Samuel Simões ~ [@samuelsimoes](https://twitter.com/samuelsimoes) ~ [Blog](http://blog.samuelsimoes.com/)

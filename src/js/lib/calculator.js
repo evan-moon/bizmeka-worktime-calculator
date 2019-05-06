@@ -10,7 +10,6 @@ function convertToHourMinute (minutes = 0) {
 
 /**
  * @function calcWorkTime
- * @argument {} xml
  * @desc 모든 시간 계산은 분단위로 이루어진다.
  */
 export function calcWorkTime (workdays) {
