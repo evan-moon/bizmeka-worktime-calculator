@@ -30,6 +30,9 @@ export function DOM (payload) {
   keys.forEach(key => {
     const $dom = $doms[key];
     const value = payload[key];
+    if (!$dom) {
+      return;
+    }
     if (value) {
       $dom.text(value);
     }
