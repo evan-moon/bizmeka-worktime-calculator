@@ -23,10 +23,15 @@ export function calcWorkTime (workdays) {
   workdays.forEach(day => {
     if (day.type === WORK_TYPE.WORK) {
       counter.work += 1;
-
       const hours = Math.floor(day.workTime.split(':')[0]);
       const minutes = Math.floor(day.workTime.split(':')[1]);
       myTotalWorkMinutes += (minutes + (hours * 60));
+    }
+    else if (day.type === WORK_TYPE.BIZ_TRIP) {
+      // 출장은 8시간 근무한 것으로 친다.
+      counter.work += 1;
+      day.workTime = '08:00';
+      myTotalWorkMinutes += WORK_TIME_FOR_DAY;
     }
     else if (day.type === WORK_TYPE.HOLIDAY) {
       if (day.holidayType === '전일') {

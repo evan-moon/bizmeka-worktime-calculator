@@ -25,6 +25,9 @@ export function bizmekaXMLParser (xml) {
     if (string.includes(BIZ_WORK_TYPES.HOLIDAY_TYPE.bizmeka)) {
       workType = WORK_TYPE.HOLIDAY;
     }
+    else if (string.includes(BIZ_WORK_TYPES.BIZ_TRIP.bizmeka)) {
+      workType = WORK_TYPE.BIZ_TRIP;
+    }
 
     const result = { type: workType };
     const parsed = string.trim().split(/\n/);
