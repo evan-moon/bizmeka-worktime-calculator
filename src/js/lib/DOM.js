@@ -27,12 +27,28 @@ export function setOverTimeDOMClass (isOver = false) {
   }
 }
 
+export function setTooMuchOverWork (isTooMuchOver = false) {
+  const $workTime = $('p[data-name="workTime"]');
+  const $tooMuchWorkTime = $('p[data-name="tooMuchWorkTime"]');
+
+  if (isTooMuchOver) {
+    $workTime.hide();
+    $workTime.find('span[data-name="overTimeHours"]').empty();
+    $workTime.find('span[data-name="overTimeMinutes"]').empty();
+
+    $tooMuchWorkTime.show();
+  }
+  else {
+    $tooMuchWorkTime.hide();
+    $workTime.show();
+  }
+}
+
 export function DOM (payload) {
   const keys = Object.keys(payload);
   keys.forEach(key => {
     const $dom = $doms[key];
     const value = payload[key];
-    console.log(key, $dom);
     if (!$dom) {
       return;
     }

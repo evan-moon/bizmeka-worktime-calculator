@@ -1,6 +1,7 @@
 import "../css/popup.css";
 import $ from 'jquery';
-import { $timeViewer, $noData, DOM, setOverTimeDOMClass } from './lib/DOM';
+import { $timeViewer, $noData, DOM, setOverTimeDOMClass, setTooMuchOverWork } from './lib/DOM';
+import { TOO_MUCH_OVER_WORK_TIME } from './constants';
 
 const port = chrome.extension.connect({ name: 'background' });
 port.onMessage.addListener(msg => {
@@ -29,6 +30,8 @@ function onFetchWorkTime (payload) {
   }
   setOverTimeDOMClass(payload.isOver);
   DOM(payload);
+
+  setTooMuchOverWork(payload.overTimeHours >= TOO_MUCH_OVER_WORK_TIME);
 }
 
 function init () {
