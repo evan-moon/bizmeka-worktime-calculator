@@ -12,3 +12,4 @@ export const WORK_TYPE = {
   WORK: 'WORK',
   BIZ_TRIP: 'BIZ_TRIP',
 };
+export const TOO_MUCH_OVER_WORK_TIME = 20; // hours

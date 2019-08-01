@@ -8,7 +8,7 @@
   <div id="title">
     <span data-name="date"></span> 근무시간 현황
   </div>
-  <div id="no-data">아직 불러올 수 있는 근무시간 데이터가 없습니다. 새로고침을 눌러주세요.</div>
+  <div id="no-data">아직 불러올 수 있는 근무시간 데이터가 없습니다. 아래에 있는 새로고침을 눌러주세요.</div>
   <div id="time-viewer">
     <ul>
       <li>
@@ -25,16 +25,20 @@
       </li>
       <li>
         <label>내 근무 시간</label>
-        <p>
+        <p data-name="workTime">
           <span data-name="myWorkHours"></span>시간
           <span data-name="myWorkMinutes"></span>분
         </p>
       </li>
       <li id="overTime">
         <label></label>
-        <p>
+        <p data-name="workTime">
           <span data-name="overTimeHours"></span> 시간
           <span data-name="overTimeMinutes"></span> 분
+        </p>
+        <p data-name="tooMuchWorkTime">
+          이번 달 초과 근무 시간이 <strong>20</strong>시간을 넘었어요!<br>
+          오늘은 일찍 퇴근하시고 가족, 친구, 애인과 행복한 시간을 보내세요!
         </p>
       </li>
     </ul>

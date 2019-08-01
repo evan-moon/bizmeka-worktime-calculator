@@ -21,7 +21,10 @@ li {
   font-weight: bold;
   font-size: 1.5rem;
 }
-
+#no-data {
+  margin: 3rem 0;
+  font-size: 1rem;
+}
 #time-viewer {
   padding: 2rem 1rem 1rem;
   display: none;
@@ -62,6 +65,10 @@ li {
 #time-viewer #overTime.over span {
   color: #4caf50;
 }
+#time-viewer #overTime p[data-name="tooMuchWorkTime"] strong {
+  color: #4caf50;
+}
+
 #refresh-button {
   width: 100%;
   margin: 1rem 0;
