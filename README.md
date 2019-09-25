@@ -1,7 +1,7 @@
 # Bizmeka Working Day Calculator
 **DO NOT OVERWORK AND ENJOY YOUR LIFE!**
 
-this application is used to calculate your working day and time in bizmeka ERP in South Korea.
+This application is used to calculate your working day and time in ERP system which is called Bizmeka.
 You can help other people who is suffering from overtime by creating pull requests freely!
 
 This Chrome extension is created with Samuel Simões's [Chrome Extension Webpack Boilerplate](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate).
