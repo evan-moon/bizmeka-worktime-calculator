@@ -23,9 +23,31 @@ export function calcWorkTime (workdays) {
   workdays.forEach(day => {
     if (day.type === WORK_TYPE.WORK) {
       counter.work += 1;
-      const hours = Math.floor(day.workTime.split(':')[0]);
-      const minutes = Math.floor(day.workTime.split(':')[1]);
-      myTotalWorkMinutes += (minutes + (hours * 60));
+      if (!day.workTime) {
+        if (day.earlyleaveTime) {
+          const earlyleave_hours = Math.floor(day.earlyleaveTime.split(':')[0]);
+          const earlyleave_minutes = Math.floor(day.earlyleaveTime.split(':')[1]);
+          const earlyleaveMinutes = (earlyleave_minutes + (earlyleave_hours * 60));
+
+          const endAt_hours = Math.floor(day.endAt.split(':')[0]);
+          const endAt_minutes = Math.floor(day.endAt.split(':')[1]);
+          const endAtMinutes = (endAt_minutes + (endAt_hours * 60));
+
+          const startAt_hours = Math.floor(day.startAt.split(':')[0]);
+          const startAt_minutes = Math.floor(day.startAt.split(':')[1]);
+          const startAtMinutes = (startAt_minutes + (startAt_hours * 60));
+
+          if (earlyleaveMinutes > endAtMinutes) {
+            myTotalWorkMinutes += (earlyleaveMinutes - startAtMinutes);
+          } else {
+            myTotalWorkMinutes += (endAtMinutes - startAtMinutes);
+          }
+        }
+      } else {
+        const hours = Math.floor(day.workTime.split(':')[0]);
+        const minutes = Math.floor(day.workTime.split(':')[1]);
+        myTotalWorkMinutes += (minutes + (hours * 60));
+      }
     }
     else if (day.type === WORK_TYPE.BIZ_TRIP) {
       // 출장은 8시간 근무한 것으로 친다.

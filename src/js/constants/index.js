@@ -6,6 +6,7 @@ export const BIZ_WORK_TYPES = {
   START_WORK_TIME: { bizmeka: '출근시각', eng: 'startAt' },
   END_WORK_TIME: { bizmeka: '퇴근시각', eng: 'endAt' },
   WORK_TIME: { bizmeka: '근무시간', eng: 'workTime' },
+  EARLY_TIME: { bizmeka: '조퇴시간', eng: 'earlyleaveTime' },
 };
 export const WORK_TYPE = {
   HOLIDAY: 'HOLIDAY',
