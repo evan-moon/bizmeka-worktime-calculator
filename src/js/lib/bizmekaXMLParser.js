@@ -55,6 +55,9 @@ export function bizmekaXMLParser (xml) {
         case BIZ_WORK_TYPES.WORK_TIME.bizmeka:
           result[BIZ_WORK_TYPES.WORK_TIME.eng] = value;
           break;
+        case BIZ_WORK_TYPES.EARLY_TIME.bizmeka:
+          result[BIZ_WORK_TYPES.EARLY_TIME.eng] = value;
+          break;
       }
     });
 
