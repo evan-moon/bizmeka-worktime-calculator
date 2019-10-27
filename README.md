@@ -1,6 +1,8 @@
 # Bizmeka Working Day Calculator
 **DO NOT OVERWORK AND ENJOY YOUR LIFE!**
 
+[Download Link](https://chrome.google.com/webstore/detail/jmjcldenbknfnmkbfcnaacblmgdklhfa/publish-accepted?authuser=0&hl=ko)
+
 This application is used to calculate your working day and time in ERP system which is called Bizmeka.
 You can help other people who is suffering from overtime by creating pull requests freely!
 
